@@ -25,9 +25,17 @@ Parameters: dict mapping strs to values
 Returns: None
 '''
 def makeModel(data):
-    return
-
-
+    data["rows"]=10
+    data["cols"]=10
+    data["board_size"]=500
+    data["cell_size"]=data["board_size"]/(data["rows"])
+    data["user_board"]=emptyGrid(data["rows"],data["cols"])
+    data["computer_board"]=emptyGrid(data["rows"],data["cols"])
+    addShips(data["computer_board"],5)
+    data["numerships"]=5
+    data["user_board"]=createShip()
+    data["computer_board"]=createShip()
+    return data
 '''
 makeView(data, userCanvas, compCanvas)
 Parameters: dict mapping strs to values ; Tkinter canvas ; Tkinter canvas
@@ -77,13 +85,13 @@ Parameters: no parameters
 Returns: 2D list of ints
 '''
 def createShip():
-    r=random.randint(1,8)
-    c=random.randint(1,8)
-    z=random.randint(0,1)
+    r=random.randint(1,8)#2
+    c=random.randint(1,8)#3
+    z=random.randint(0,1)#0
     if z==0:
-        ship=[[r-1,c],[r,c],[r+1,c]]
+        ship=[[r-1,c],[r,c],[r+1,c]]#[1,3][2,3][3,3]
     else:
-        ship=[[r,c-1],[r,c],[r,c+1]]
+        ship=[[r,c-1],[r,c],[r,c+1]]#[2,2][2,3][2,4]
     return ship
 
 
@@ -295,4 +303,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     # runSimulation(500, 500)
-    test.testAddShips()
+    test.testMakeModel()
