@@ -29,12 +29,10 @@ def makeModel(data):
     data["cols"]=10
     data["board_size"]=500
     data["cell_size"]=data["board_size"]/(data["rows"])
-    data["user_board"]=emptyGrid(data["rows"],data["cols"])
+    data["user_board"]=test.testGrid()
     data["computer_board"]=emptyGrid(data["rows"],data["cols"])
-    addShips(data["computer_board"],5)
-    data["numerships"]=5
-    data["user_board"]=createShip()
-    data["computer_board"]=createShip()
+    data["number_ships"]=5
+    addShips(data["computer_board"],data["number_ships"])
     return data
 '''
 makeView(data, userCanvas, compCanvas)
@@ -42,6 +40,8 @@ Parameters: dict mapping strs to values ; Tkinter canvas ; Tkinter canvas
 Returns: None
 '''
 def makeView(data, userCanvas, compCanvas):
+    drawGrid(data,userCanvas,data["user_board"],True)
+    drawGrid(data, compCanvas,data["computer_board"],False)
     return
 
 
@@ -131,11 +131,14 @@ Returns: None
 '''
 def drawGrid(data, canvas, grid, showShips):
     for row in range(data["rows"]):
-        for cols in range(data["columns"]):
+        for cols in range(data["cols"]):
             if grid[row][cols]==SHIP_UNCLICKED:
                 canvas.create_rectangle(cols*data["cell_size"],row*data["cell_siez"],data["cell_size"],+cols*data["cell_size"],row*data["cell_size"]+data["cell_size"],fill="yellow")
             else:
-                canvas.create_rectangle(cols+data["cell_size"],row*data["cell_size"],data["cell_size"]+cols*data["cell_size"],row*data["cell_size"]+data["cell_size"],fill="blue")  
+                canvas.create_rectangle(cols*data["cell_size"],row*data["cell_siez"],data["cell_size"],+cols*data["cell_size"],row*data["cell_size"]+data["cell_size"],fill="blue")
+
+        else:
+            canvas.create_rectangle(cols+data["cell_size"],row*data["cell_size"],data["cell_size"]+cols*data["cell_size"],row*data["cell_size"]+data["cell_size"],fill="blue")  
     return 
 
 ### WEEK 2 ###
@@ -308,4 +311,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     # runSimulation(500, 500)
-    test.testDrawGrid()
+    test.testMakeModel()
