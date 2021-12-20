@@ -25,9 +25,15 @@ Parameters: dict mapping strs to values
 Returns: None
 '''
 def makeModel(data):
-    return
-
-
+    data["rows"]=10
+    data["cols"]=10
+    data["board_size"]=500
+    data["cell_size"]=data["board_size"]/(data["rows"])
+    data["user_board"]=emptyGrid(data["rows"],data["cols"])
+    data["computer_board"]=emptyGrid(data["rows"],data["cols"])
+    data["number_ships"]=5
+    addShips(data["computer_board"],data["number_ships"])
+    return data
 '''
 makeView(data, userCanvas, compCanvas)
 Parameters: dict mapping strs to values ; Tkinter canvas ; Tkinter canvas
@@ -62,7 +68,13 @@ Parameters: int ; int
 Returns: 2D list of ints
 '''
 def emptyGrid(rows, cols):
-    return
+    all=[]
+    for i in range(rows):
+        a=[]
+        for j in range(cols):
+            a.append(EMPTY_UNCLICKED)
+        all.append(a)
+    return all
 
 
 '''
@@ -71,7 +83,14 @@ Parameters: no parameters
 Returns: 2D list of ints
 '''
 def createShip():
-    return
+    r=random.randint(1,8)#2
+    c=random.randint(1,8)#3
+    z=random.randint(0,1)#0
+    if z==0:
+        ship=[[r-1,c],[r,c],[r+1,c]]#[1,3][2,3][3,3]
+    else:
+        ship=[[r,c-1],[r,c],[r,c+1]]#[2,2][2,3][2,4]
+    return ship
 
 
 '''
@@ -80,7 +99,10 @@ Parameters: 2D list of ints ; 2D list of ints
 Returns: bool
 '''
 def checkShip(grid, ship):
-    return
+    for i in range(len(ship)):
+        if grid[ship[i][0]][ship[i][1]]!=EMPTY_UNCLICKED: 
+            return False
+    return True
 
 
 '''
@@ -89,7 +111,15 @@ Parameters: 2D list of ints ; int
 Returns: 2D list of ints
 '''
 def addShips(grid, numShips):
-    return
+    S=0
+    while S<numShips:
+        create1=createShip()
+        check1=checkShip(grid, create1)
+        if  check1==True:
+            for j in create1:
+                grid[j[0]][j[1]]=SHIP_UNCLICKED    
+            S+=1    
+    return grid
 
 
 '''
@@ -271,3 +301,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     # runSimulation(500, 500)
+    test.testMakeModel()

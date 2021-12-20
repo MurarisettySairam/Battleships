@@ -109,7 +109,6 @@ def week1Tests():
     testAddShips()
     testMakeModel()
     testDrawGrid()
-
 ### WEEK 2 TESTS ###
 
 def testIsVertical():
@@ -248,3 +247,4 @@ def week3Tests():
     testGetComputerGuess()
     testIsGameOver()
     testDrawGameOver()
+    
