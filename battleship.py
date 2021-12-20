@@ -133,11 +133,12 @@ def drawGrid(data, canvas, grid, showShips):
         for c in range(data["cols"]):
             if grid[r][c]==SHIP_UNCLICKED:
                 if showShips==True:
-                    canvas.create_rectangle(c*data["cell_size"],r*data["cell_size"],data["cell_size"],+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="yellow")
+                    canvas.create_rectangle(c*data["cell_size"],r*data["cell_size"],data["cell_size"]+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="yellow")
                 else:
-                     canvas.create_rectangle(c*data["cell_size"],r*data["cell_size"],data["cell_size"],+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="blue")
+                     canvas.create_rectangle(c*data["cell_size"],r*data["cell_size"],data["cell_size"]+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="blue")
             else:
-                canvas.create_rectangle(c+data["cell_size"],r*data["cell_size"],data["cell_size"]+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="blue")  
+                canvas.create_rectangle(c*data["cell_size"],r*data["cell_size"],data["cell_size"]+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="blue")
+
     return
 
 ### WEEK 2 ###
