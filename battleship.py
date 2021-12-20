@@ -42,6 +42,7 @@ Parameters: dict mapping strs to values ; Tkinter canvas ; Tkinter canvas
 Returns: None
 '''
 def makeView(data, userCanvas, compCanvas):
+
     return
 
 
@@ -130,13 +131,14 @@ Parameters: dict mapping strs to values ; Tkinter canvas ; 2D list of ints ; boo
 Returns: None
 '''
 def drawGrid(data, canvas, grid, showShips):
-    for row in range(data["rows"]):
-        for cols in range(data["columns"]):
-            if grid[row][cols]==SHIP_UNCLICKED:
-                canvas.create_rectangle(cols*data["cell_size"],row*data["cell_siez"],data["cell_size"],+cols*data["cell_size"],row*data["cell_size"]+data["cell_size"],fill="yellow")
+    for r in range(data["rows"]):
+        for c in range(data["cols"]):
+            if grid[r][c]==SHIP_UNCLICKED:
+                if showShips==True:
+                    canvas.create_rectangle(c*data["cell_size"],r*data["cell_siez"],data["cell_size"],+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="yellow")
             else:
-                canvas.create_rectangle(cols+data["cell_size"],row*data["cell_size"],data["cell_size"]+cols*data["cell_size"],row*data["cell_size"]+data["cell_size"],fill="blue")  
-    return 
+                canvas.create_rectangle(c+data["cell_size"],r*data["cell_size"],data["cell_size"]+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="blue")  
+    return
 
 ### WEEK 2 ###
 
