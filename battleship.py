@@ -31,10 +31,8 @@ def makeModel(data):
     data["cell_size"]=data["board_size"]/(data["rows"])
     data["user_board"]=emptyGrid(data["rows"],data["cols"])
     data["computer_board"]=emptyGrid(data["rows"],data["cols"])
-    addShips(data["computer_board"],5)
-    data["numerships"]=5
-    data["user_board"]=createShip()
-    data["computer_board"]=createShip()
+    data["number_ships"]=5
+    addShips(data["computer_board"],data["number_ships"])
     return data
 '''
 makeView(data, userCanvas, compCanvas)
