@@ -133,9 +133,10 @@ def drawGrid(data, canvas, grid, showShips):
     for row in range(data["rows"]):
         for cols in range(data["cols"]):
             if grid[row][cols]==SHIP_UNCLICKED:
-                canvas.create_rectangle(cols*data["cell_size"],row*data["cell_siez"],data["cell_size"],+cols*data["cell_size"],row*data["cell_size"]+data["cell_size"],fill="yellow")
-            else:
-                canvas.create_rectangle(cols*data["cell_size"],row*data["cell_siez"],data["cell_size"],+cols*data["cell_size"],row*data["cell_size"]+data["cell_size"],fill="blue")
+                if showShips==True:
+                    canvas.create_rectangle(cols*data["cell_size"],row*data["cell_size"],data["cell_size"],+cols*data["cell_size"],row*data["cell_size"]+data["cell_size"],fill="yellow")
+                else:
+                    canvas.create_rectangle(cols*data["cell_size"],row*data["cell_size"],data["cell_size"],+cols*data["cell_size"],row*data["cell_size"]+data["cell_size"],fill="blue")
 
         else:
             canvas.create_rectangle(cols+data["cell_size"],row*data["cell_size"],data["cell_size"]+cols*data["cell_size"],row*data["cell_size"]+data["cell_size"],fill="blue")  
@@ -310,5 +311,5 @@ def runSimulation(w, h):
 if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
-    # runSimulation(500, 500)
-    test.testMakeModel()
+    runSimulation(500, 500)
+    test.testGrid()
