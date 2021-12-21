@@ -163,12 +163,7 @@ Parameters: 2D list of ints
 Returns: bool
 '''
 def isHorizontal(ship):
-    r=0
-    if ship[r][0]==ship[r+1][0]==ship[r+2][0]:
-        ship.sort()
-        if ship[r+1][1]-ship[r][1]==1 and ship[r+2][1]-ship[r+1][1]==1:
-            return True
-    return False
+    return 
 
 
 '''
