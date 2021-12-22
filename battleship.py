@@ -215,14 +215,13 @@ Parameters: dict mapping strs to values
 Returns: None
 '''
 def placeShip(data):
-    s=data["user_board"]
-    if shipIsValid(s,data["temp_ship"]):
+    g=data["user_board"]
+    if shipIsValid(g, data["temp_ship"]):
         for i in data["temp_ship"]:
-            s[i[0][i[1]]]=SHIP_UNCLICKED
-        if len(data["temp_ship"])==3:
-            placeShip(data)
-        if data["user_board"]==5:
-            print("You can start the game")
+            g[i[0]][i[1]]=SHIP_UNCLICKED
+    else:
+        print("Ship is not Valid")
+    data["temp_ship"]=[]
     return
 
 
