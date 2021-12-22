@@ -218,9 +218,9 @@ def placeShip(data):
     if shipIsValid(s,data["temp_ship"]):
         for i in data["temp_ship"]:
             s[i[0][i[1]]]=SHIP_UNCLICKED
-        if len(data["tempship"])==3:
+        if len(data["temp_ship"])==3:
             placeShip(data)
-        if data["userships"]==5:
+        if data["user_board"]==5:
             print("You can start the game")
     return
 
