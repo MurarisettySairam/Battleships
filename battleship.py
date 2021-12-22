@@ -33,7 +33,8 @@ def makeModel(data):
     data["computer_board"]=emptyGrid(data["rows"],data["cols"])
     data["number_ships"]=5
     addShips(data["computer_board"],data["number_ships"])
-    data["temp_ship"]=test.testShip()
+    data["temp_ship"]=[]
+    data["user_ships"]=0
     return data
 '''
 makeView(data, userCanvas, compCanvas)
@@ -231,6 +232,14 @@ Parameters: dict mapping strs to values ; int ; int
 Returns: None
 '''
 def clickUserBoard(data, row, col):
+    g=data["user_board"]
+    if [row,col] in g or data["user_ships"]==5:
+        return
+    data["temp_ship"].append([row,col])
+    if len(data["temp_ship"])==3:
+        placeShip(data)
+    if data["user_ships"]==5:
+        print("You can start the game")
     return
 
 
