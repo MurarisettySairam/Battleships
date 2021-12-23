@@ -43,7 +43,7 @@ Returns: None
 '''
 def makeView(data, userCanvas, compCanvas):
     drawGrid(data,userCanvas,data["user_board"],True)
-    drawGrid(data, compCanvas,data["computer_board"],True)
+    drawGrid(data, compCanvas,data["computer_board"],False)
     drawShip(data,userCanvas,data["temp_ship"])
     return
 
