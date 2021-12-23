@@ -145,6 +145,10 @@ def drawGrid(data, canvas, grid, showShips):
                     canvas.create_rectangle(c*data["cell_size"],r*data["cell_size"],data["cell_size"]+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="yellow")
                 else:
                     canvas.create_rectangle(c*data["cell_size"],r*data["cell_size"],data["cell_size"]+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="blue")
+            elif grid[r][c]==SHIP_CLICKED:
+                canvas.create_rectangle(c*data["cell_size"],r*data["cell_size"],data["cell_size"]+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="red")
+            elif grid[r][c]==EMPTY_CLICKED:
+                canvas.create_rectangle(c*data["cell_size"],r*data["cell_size"],data["cell_size"]+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="white")
             else:
                 canvas.create_rectangle(c*data["cell_size"],r*data["cell_size"],data["cell_size"]+c*data["cell_size"],r*data["cell_size"]+data["cell_size"],fill="blue")
     return
@@ -362,5 +366,4 @@ def runSimulation(w, h):
 if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
-    #runSimulation(500, 500)
-    test.testUpdateBoard()
+    runSimulation(500, 500)
