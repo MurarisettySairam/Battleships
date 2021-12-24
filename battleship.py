@@ -265,6 +265,8 @@ def updateBoard(data, board, row, col, player):
     else:
         board[row][col]==EMPTY_UNCLICKED
         board[row][col]=EMPTY_CLICKED
+    if isGameOver(board)==True:
+        data["winner"]=player
     return
 
 
@@ -306,7 +308,11 @@ Parameters: 2D list of ints
 Returns: bool
 '''
 def isGameOver(board):
-    return
+    for i in range (len(board)):
+        for j in range (len(board)):
+            if board[i][j]==SHIP_UNCLICKED:
+                return False
+    return True
 
 
 '''
@@ -376,4 +382,4 @@ if __name__ == "__main__":
 
     ## Finally, run the simulation to test it manually ##
     runSimulation(500, 500)
-    test.testGetComputerGuess()
+    test.testIsGameOver()
